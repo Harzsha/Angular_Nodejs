@@ -14,7 +14,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HSInterceptorInterceptor } from './Services/interceptor/hs-interceptor.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,6 +41,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     NgbModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -7,16 +7,16 @@ export class EncryptionDecryptionService {
 
   constructor() { }
 
-  private passphrase = 'mySecretPassphrase';
+  private secretKey = 'your-secret-key';
 
-  encrypt(data: any): string {
-    const encryptedText = CryptoJS.AES.encrypt(JSON.stringify(data), this.passphrase).toString();
-    return encryptedText;
+  encrypt(data: any) {
+    // const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), this.secretKey).toString();
+    return data;
   }
 
-  decrypt(encryptedText: string): any {
-    const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, this.passphrase);
-    const decryptedData = JSON.parse(decryptedBytes.toString(CryptoJS.enc.Utf8));
-    return decryptedData;
+  decrypt(encryptedData:any): any {
+    // const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
+    // const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    return encryptedData;
   }
 }
