@@ -39,9 +39,9 @@ export class RegisterComponent {
 
   onSubmit() {
       this.submitted = true;
-      this.http.get<{ message: string }>('http://localhost:3000/api/data').subscribe(
+      this.http.get('http://localhost:3000/api/data').subscribe(
         (response) => {
-          console.log(response.message) ;
+          console.log(response) ;
         },
         (error) => {
           console.error(error);

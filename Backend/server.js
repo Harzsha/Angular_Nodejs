@@ -5,12 +5,24 @@ const app = express();
 const port = 3000; // Change this to your desired port
 
 
-
 app.use(cors())
 app.get('/api/data', (req, res) => {
-  res.json({ message: 'Hello from the our backend!' });
+  const dataToEncrypt = { name: 'harsha', place:"Bangalore" };
+  const encryptedData = encryptionUtils.encrypt(dataToEncrypt);
+  console.log(encryptedData)
+  res.json(encryptedData);
+});
+
+app.get('/api/decrypt/:encryptedData', (req, res) => {
+  const decryptedData = encryptionUtils.decrypt(req.params.encryptedData);
+  res.json({ decryptedData });
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
+
+
+
