@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HSInterceptorInterceptor } from './Services/interceptor/hs-interceptor.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -37,6 +38,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
       closeButton:true,
       progressBar:true,
     }),
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     AppRoutingModule,
     NgbModule,
     RouterModule,
