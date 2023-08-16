@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
-mongoose.set('strictQuery', false);
-const URI = "mongodb://0.0.0.0:27017/H&SAPP";
+const environment = process.env.NODE_ENV || 'development';
+const config = require(`./config/${environment}`);
+const mongoDbUrl = config.mongoDbUrl;
+
 
 function mongodb() {
-    mongoose
-        .connect(URI)
-        .then(() => {
-            console.log("Connected to MongoDB");
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    mongoose.connect(mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+      console.error('Error connecting to MongoDB:', err);
+    });
 }
 module.exports = {
     mongodb
