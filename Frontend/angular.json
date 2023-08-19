@@ -37,6 +37,12 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-clip-rotate-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-fussion.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "node_modules/ngx-spinner/animations/cog.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "node_modules/ngx-spinner/animations/timer.css",
               "src/styles.scss"
             ],
             "scripts": [              
@@ -48,8 +54,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -111,6 +117,12 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-clip-rotate-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-fussion.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "node_modules/ngx-spinner/animations/cog.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "node_modules/ngx-spinner/animations/timer.css",
               "src/styles.scss"
             ],
             "scripts": [

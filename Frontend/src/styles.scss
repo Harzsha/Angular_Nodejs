@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@media (min-width: 576px) and (max-width: 767px) {
+    .mobile-nav{
+        display: none;
+    }
+}
+.navbarHeader{
+  background: #FCF6F5;
+}
+.navbarBody{
+    background: #E7E6F2;
+}

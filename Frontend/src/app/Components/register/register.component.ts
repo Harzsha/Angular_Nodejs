@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ export class RegisterComponent {
   registerForm!: FormGroup;
   submitted = false;
   date:Date=new Date();
-  constructor(private formBuilder: FormBuilder,private router:Router,private toastr:ToastrService) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,private toastr:ToastrService,private http:HttpClient) { }
 
   ngOnInit() {
     this.date = new Date();
@@ -38,6 +39,14 @@ export class RegisterComponent {
 
   onSubmit() {
       this.submitted = true;
+      this.http.get('http://localhost:3000/api/data').subscribe(
+        (response) => {
+          console.log(response) ;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
 
       if (this.registerForm.invalid) {
           return;
