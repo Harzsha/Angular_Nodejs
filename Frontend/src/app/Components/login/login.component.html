@@ -1,51 +1,52 @@
 <div class="container-fluid">
-  <div class="row my-3">
-    <div class="col">
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1"
-        placeholder="name@example.com">
+
+
+<div class="row mt-5">
+  <div class="col-md-4 offset-md-4 col-xs-4 offset-sm-3">
+<div class="card auth ext-white  mb-3">
+  <div class="card-body auth-card justify-content-center">
+  <div class="row my-3 justify-content-center">
+    <div class="col mb-10 col-lg-10 text-white" >
+      <label for="exampleFormControlInput1" class="form-label">Email</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1"
+        placeholder="email">
     </div>
   </div>
-  <div class="row my-3">
-    <div class="col">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <div class="row my-3 justify-content-center">
+    <div class="col mb-10 col-lg-10 text-white">
+      <label for="exampleFormControlTextarea1" class="form-label">password</label>
+      <input type="password" name="password" class="form-control" placeholder="password" >
+    </div>
+  </div><br>
+  <div class="row my-3 justify-content-center">
+    <div class="d-grid gap-2  mb-3 col-10 mx-auto">
+      <button class="btn btn-md btn-primary" type="button" (click)="open(demoModal)">Login</button>
     </div>
   </div>
-  <div class="row my-3">
-    <div class="col">
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-      </div>
+
+  <div class="row my-3 justify-content-center">
+    <div class="d-grid gap-2  mb-3 col-10 mx-auto">
+      <a class=" btn btn-md btn-outline-primary" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Sign in with Google</a>
     </div>
+</div>
+
+  <div class="text-center">
+    Don`t have an account ? <a routerLink="/register">Sign Up</a> hera.
   </div>
-  <div class="row my-3">
-    <div class="col">
-      <button class="btn btn-sm btn-outline-primary" (click)="open(demoModal)">Login</button>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <ng-template #demoModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Login Updates</h4>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" name="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker
-            #dp="ngbDatepicker">
-          <button type="button" class="btn btn-outline-secondary bi bi-calendar" (click)="dp.toggle()"></button>
-        </div>
-      </div>
-    </form>
-  </div>
+ 
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
   </div>
 </ng-template>
