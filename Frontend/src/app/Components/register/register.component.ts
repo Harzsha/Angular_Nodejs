@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
   registerForm!: FormGroup;
-  submitted = false;
+  submitted:boolean=false;
   date:Date=new Date();
   constructor(private formBuilder: FormBuilder,private router:Router,private toastr:ToastrService,private http:HttpClient) { }
 
