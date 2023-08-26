@@ -22,7 +22,7 @@ export class HSInterceptorInterceptor implements HttpInterceptor {
     if (request.method === 'POST' || request.method === 'PUT') {
       const encryptedData = this.encryptionService.encrypt(request.body);
       const encryptedRequest = request.clone({
-        body: encryptedData,
+        body: request.body,
       });
       return next.handle(encryptedRequest);
     }
