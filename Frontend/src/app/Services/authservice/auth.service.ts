@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay, of, tap } from 'rxjs';
 
@@ -6,12 +7,12 @@ import { Observable, delay, of, tap } from 'rxjs';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   isLoggedIn = false;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
-
+  public url="http://localhost:3000"
   login(): Observable<boolean> {
     return of(true).pipe(
       delay(1000),
@@ -21,5 +22,8 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn = false;
+  }
+  Register(UserDetails:Object){
+    return this.http.post(this.url+"/api/register",UserDetails)
   }
 }

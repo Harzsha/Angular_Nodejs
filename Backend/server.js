@@ -8,6 +8,7 @@ const mongoConenct = require('./MongoDBConnection');
 app.use(cors());
 app.use(bodyParser.json());
 const User = require('./models/User'); // Create a User schema using mongoose
+const Register = require('./models/Register'); // Create a User schema using mongoose
 app.get('/api/data', (req, res) => {
   const dataToEncrypt = { name: 'harsha', place:"Bangalore" };
   const encryptedData = encryptionUtils.encrypt(dataToEncrypt);
@@ -29,9 +30,11 @@ app.listen(port, () => {
 app.post('/api/register', async (req, res) => {
   try {
     console.log(req.body)
-    const user = new User({
-      username: req.body.username,
-      password: req.body.password
+    const user = new Register({
+      username: req.body.firstName,
+      password: req.body.password,
+      dateofBirth:req.body.dob,
+      email:req.body.email,
     });
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });

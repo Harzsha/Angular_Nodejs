@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { log } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/Services/authservice/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,15 +15,12 @@ export class RegisterComponent {
   registerForm!: FormGroup;
   submitted:boolean=false;
   date:Date=new Date();
-  constructor(private formBuilder: FormBuilder,private router:Router,private toastr:ToastrService,private http:HttpClient) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,private toastr:ToastrService,private authService:AuthService) { }
 
   ngOnInit() {
     this.date = new Date();
       this.registerForm = this.formBuilder.group({
-          title: ['', Validators.required],
           firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          // validates date format yyyy-mm-dd
           dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
           email: ['', [Validators.required, Validators.email]],
           password: ['', [Validators.required, Validators.minLength(6)]],
@@ -39,21 +38,16 @@ export class RegisterComponent {
 
   onSubmit() {
       this.submitted = true;
-      this.http.get('http://localhost:3000/api/data').subscribe(
-        (response) => {
-          console.log(response) ;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-
       if (this.registerForm.invalid) {
           return;
       }
-      this.toastr.success('Success fully Registered!', 'Success');
-      localStorage.setItem("userData",JSON.stringify(this.registerForm.value));
-      this.router.navigate(['/login']);
+      this.authService.Register(this.registerForm.value).subscribe((response:any)=>{
+        this.toastr.success(response.message, 'Success');
+        localStorage.setItem("userData",JSON.stringify(this.registerForm.value));
+        this.router.navigate(['/login']);
+      },err=>{
+        this.toastr.error(err.error.error, 'Success')
+      });
   }
 
   onReset() {
