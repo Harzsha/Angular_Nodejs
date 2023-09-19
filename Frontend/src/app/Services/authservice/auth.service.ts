@@ -13,11 +13,8 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
   public url="http://localhost:3000"
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(() => (this.isLoggedIn = true))
-    );
+  login(loginDetails:Object): Observable<any> {
+    return this.http.post(this.url+"/login",loginDetails)
   }
 
   logout(): void {

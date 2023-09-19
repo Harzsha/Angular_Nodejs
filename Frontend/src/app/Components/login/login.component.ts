@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/Services/authservice/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   submitted: boolean = false;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private toastr: ToastrService, private authService: AuthService, private http: HttpClient, private router: Router) {
   }
 
   ngOnInit() {
@@ -32,9 +34,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.invalid) {
       return;
     }
-    localStorage.setItem("userData", JSON.stringify(this.loginForm.value));
-    this.router.navigate(['/dashboard']);
+    this.authService.login(this.loginForm.value).subscribe((response: any) => {
+      this.toastr.success(response.message, 'Success');
+      localStorage.setItem("userData", JSON.stringify(this.loginForm.value));
+      this.router.navigate(['/dashboard']);
+    }, err => {
+      this.toastr.error(err.error.error, 'Error')
+    });
   }
+
 
   get f() { return this.loginForm.controls; }
 }
