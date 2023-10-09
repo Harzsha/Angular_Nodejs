@@ -1,7 +1,24 @@
 <ngx-spinner type="square-jelly-box"></ngx-spinner>
 
-<div class="container-fluid position-absolute top-50 start-50 translate-middle text-nowrap text-center">
+<!-- <div class="container-fluid position-absolute top-50 start-50 translate-middle text-nowrap text-center">
     
         <h1 class="an-2">Welcome to our Application!</h1>
     
-</div>
+</div> -->
+<div class="container-fluid position-absolute top-50 start-50 translate-middle text-nowrap text-center">
+   
+        <h1>Angular 14 Bootstrap Carousel Example - Tutsmake.com</h1>
+           
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let image of images">
+            <div class="wrapper">
+              <img [src]="image.src" alt="Random first slide">
+            </div>
+            <div class="carousel-caption">
+              <h3>{{ image.title }}</h3>
+              <p>{{ image.short }}</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+             
+        </div>

@@ -2,15 +2,25 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 // declare var anime: any;  
 import anime from 'animejs/lib/anime.es.js';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [NgbCarouselConfig]
 })
 export class DashboardComponent implements OnInit,AfterViewInit {
 textWrapper: any;
-constructor(private spinner: NgxSpinnerService){
+images = [
+  {title: 'First Slide', short: 'First Slide Short', src: "https://picsum.photos/id/700/900/500"},
+  {title: 'Second Slide', short: 'Second Slide Short', src: "https://picsum.photos/id/1011/900/500"},
+  {title: 'Third Slide', short: 'Third Slide Short', src: "https://picsum.photos/id/984/900/500"}
+];
+constructor(private spinner: NgxSpinnerService,private config: NgbCarouselConfig){
+  config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
 }
 
 ngOnInit(): void {

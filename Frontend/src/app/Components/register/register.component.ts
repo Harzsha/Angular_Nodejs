@@ -41,13 +41,14 @@ export class RegisterComponent {
       if (this.registerForm.invalid) {
           return;
       }
-      this.authService.Register(this.registerForm.value).subscribe((response:any)=>{
-        this.toastr.success(response.message, 'Success');
-        localStorage.setItem("userData",JSON.stringify(this.registerForm.value));
-        this.router.navigate(['/login']);
-      },err=>{
-        this.toastr.error(err.error.error, 'Success')
-      });
+      this.router.navigate(['/login']);
+    //   this.authService.Register(this.registerForm.value).subscribe((response:any)=>{
+    //     this.toastr.success(response.message, 'Success');
+    //     localStorage.setItem("userData",JSON.stringify(this.registerForm.value));
+    //     this.router.navigate(['/login']);
+    //   },err=>{
+    //     this.toastr.error(err.error.error, 'Success')
+    //   });
   }
 
   onReset() {

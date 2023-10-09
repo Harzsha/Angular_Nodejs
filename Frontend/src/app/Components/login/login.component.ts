@@ -34,13 +34,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.value).subscribe((response: any) => {
-      this.toastr.success(response.message, 'Success');
-      localStorage.setItem("userData", JSON.stringify(this.loginForm.value));
-      this.router.navigate(['/dashboard']);
-    }, err => {
-      this.toastr.error(err.error.error, 'Error')
-    });
+    this.router.navigate(['/dashboard']);
+    // this.authService.login(this.loginForm.value).subscribe((response: any) => {
+    //   this.toastr.success(response.message, 'Success');
+    //   localStorage.setItem("userData", JSON.stringify(this.loginForm.value));
+    //   this.router.navigate(['/dashboard']);
+    // }, err => {
+    //   this.toastr.error(err.error.error, 'Error')
+    // });
   }
 
 
